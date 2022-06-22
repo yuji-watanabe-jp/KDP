@@ -83,7 +83,7 @@ Since Kubernetes resources are typically mutated during admission controls by na
 
 There are two approaches to handle the defaults and other mutations:
 
-1. Allow users to specify an `ignoreFields` in the policy: this is useful when there are few changes in the resource manifest, and and most changes are isolated to the `status` element. The drawback of this approach is that each field needs to be maintained in the policy.
+1. Allow users to specify an `ignoreFields` in the policy: this is useful when there are few changes in the resource manifest, and most changes are isolated to the `status` element. The drawback of this approach is that each field needs to be maintained in the policy.
 
 2. Use the API sever `dry-run` feature: this is useful when there are several changes made for defaults and by controllers to the resource. For example, a pod has several fields across its `spec` and `status` elements that get modified over its lifecycle. The drawback of this approach is that Kyverno needs permissions to create the resource via a `dry-run`. 
 
@@ -92,6 +92,7 @@ There are two approaches to handle the defaults and other mutations:
 1. Kyverno should support a new `validate.manifests` declaration to allow verifying a YAML has been signed by one or more signatures.
 2. The declaration must support a list of keys and allow logical AND / OR operations to allow signing by at least one of the keys for key rotation, a minimum count of keys, and multiple keys e.g. team and group level.  
 3. A Kyverno policy rule for YAML verification should automatically allow (i.e. ignore) mutations performed by “trusted” controllers such as Kubernetes controllers and  Kyverno mutate rules.  
+4. The Kyverno CLI `apply` and `test` commands should support YAML signature verification. 
 
 
 ## Drawbacks
