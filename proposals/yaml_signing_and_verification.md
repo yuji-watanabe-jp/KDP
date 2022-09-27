@@ -30,7 +30,7 @@ Here is an example of signing an nginx pod using a static key:
 This produces a `nginx-pod.yaml.signed` declaration that looks like this:
 
 ```
- apiVersion: v1
+apiVersion: v1
 kind: Pod
 metadata:
   annotations:
